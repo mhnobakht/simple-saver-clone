@@ -1,3 +1,19 @@
+<?php
+
+if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    
+    // var_dump($_SERVER);
+
+    // $ip = $_SERVER['REMOTE_ADDR'];
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+    echo $user_agent;
+
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +28,13 @@
             <h1 class="text-center">Simple Saver</h1>
         </header>
         <main>
-            <form action="">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                 <div class="form-group">
                     <label for="text">Text:</label>
-                    <textarea placeholder="type something..." name="" id="text" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea placeholder="type something..." name="message" id="text" cols="30" rows="10" class="form-control"></textarea>
                 </div>
                 <div class="form-group mt-3">
-                    <input type="submit" value="Save" class="form-control btn btn-dark">
+                    <input name="save_btn" type="submit" value="Save" class="form-control btn btn-dark">
                 </div>
             </form>
         </main>
