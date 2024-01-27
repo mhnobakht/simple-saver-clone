@@ -1,15 +1,18 @@
 <?php
 
+require_once './class/Message.php';
+
 if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     
     
-    // var_dump($_SERVER);
-
-    // $ip = $_SERVER['REMOTE_ADDR'];
+    // get form and request data
+    $ip = $_SERVER['REMOTE_ADDR'];
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    $message = $_POST['message'];
 
-    echo $user_agent;
-
+    
+    $_message = new Message();
+    $_message->add($ip, $user_agent, $message);
 
 }
 

@@ -2,7 +2,7 @@
 
 class Database {
 
-    private $host = 'localhost';
+    private $host = 'localhost:3307';
     private $username = 'root';
     private $password = '';
     private $database = 'simple_savaer_dbs';
@@ -30,7 +30,7 @@ class Database {
         $sql = "INSERT INTO $table ($keys) VALUES ($values)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute(array_values($data));
-        return $stmt->rowCount();
+        return $this->connection->lastInsertId();
     }
 
     // Method to update data in a table
@@ -72,7 +72,7 @@ class Database {
 
 }
 
-$obj = new Database();
+// $obj = new Database();
 //================================================= insert data
 // $data = [
 //     'firstname' => 'morvarid',
