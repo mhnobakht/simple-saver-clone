@@ -15,12 +15,20 @@ class Message {
 
     public function add($ip, $user_agent, $message) {
 
-        // insert user
-        $user_data = [
-            'ip' => $ip
-        ];
 
-        $user_id = $this->connection->insert('users', $user_data);
+        $user_id = $this->checkIP($ip);
+
+        if(is_null($user_id)) {
+
+            // insert user
+            $user_data = [
+                'ip' => $ip
+            ];
+
+            $user_id = $this->connection->insert('users', $user_data);
+            
+        }
+        
 
         $message_data = [
             'user_id' => $user_id,
@@ -32,5 +40,16 @@ class Message {
 
     }
 
+    public function checkIP($ip) {
+
+        $result = $this->connection->select('users', "ip='$ip'");
+
+        if(count($result) > 0) {
+            return $result[0]['id'];
+        }else{
+            return null;
+        }
+
+    }
 
 }
