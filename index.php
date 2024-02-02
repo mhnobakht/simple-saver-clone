@@ -1,6 +1,11 @@
 <?php
 
 require_once './class/Message.php';
+$_message = new Message();
+
+$ip = $_SERVER['REMOTE_ADDR'];
+
+$lastMessage =  $_message->getMessage($ip);
 
 if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     
@@ -11,8 +16,9 @@ if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $message = $_POST['message'];
 
     
-    $_message = new Message();
     $_message->add($ip, $user_agent, $message);
+
+    header('Location: '.$_SERVER['PHP_SELF']);
 
 }
 
@@ -34,7 +40,7 @@ if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                 <div class="form-group">
                     <label for="text">Text:</label>
-                    <textarea placeholder="type something..." name="message" id="text" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea placeholder="type something..." name="message" id="text" cols="30" rows="10" class="form-control"><?php echo $lastMessage; ?></textarea>
                 </div>
                 <div class="form-group mt-3">
                     <input name="save_btn" type="submit" value="Save" class="form-control btn btn-dark">
