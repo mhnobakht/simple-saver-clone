@@ -1,0 +1,6 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "academy01/semej": "v1.0.0.x-dev"
+    }
+}

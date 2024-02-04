@@ -1,6 +1,9 @@
 <?php
 
+use Academy01\Semej\Semej;
+
 require_once 'Database.php';
+require_once "vendor/autoload.php";
 
 class Message {
 
@@ -37,6 +40,9 @@ class Message {
         ];
 
         $this->connection->insert('messages', $message_data);
+
+        Semej::set('success', 'OK', 'Message saved.');
+        header('Location: '.$_SERVER['PHP_SELF']);
 
     }
 

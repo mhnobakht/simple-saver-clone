@@ -1,5 +1,7 @@
 <?php
 
+use Academy01\Semej\Semej;
+
 require_once './class/Message.php';
 $_message = new Message();
 
@@ -18,7 +20,7 @@ if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $_message->add($ip, $user_agent, $message);
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    
 
 }
 
@@ -37,6 +39,7 @@ if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="text-center">Simple Saver</h1>
         </header>
         <main>
+            <?php Semej::show(); ?>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                 <div class="form-group">
                     <label for="text">Text:</label>
