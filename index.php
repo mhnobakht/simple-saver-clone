@@ -8,6 +8,7 @@ $_message = new Message();
 $ip = $_SERVER['REMOTE_ADDR'];
 
 $lastMessage =  $_message->getMessage($ip);
+$lastMessages = $_message->getMessages($ip);
 
 if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     
@@ -49,8 +50,34 @@ if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input name="save_btn" type="submit" value="Save" class="form-control btn btn-dark">
                 </div>
             </form>
+            <hr>
+            <h5>last 10 Messages.</h5>
+            <small>
+                IP: 1.2.3.4
+            </small>
+            <table class="table table-responsive table-stripped table-info table-bordered">
+                <thead>
+                    <tr>
+                        <th>Browser</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach($lastMessages as $message):
+                    ?>
+                    <tr>
+                        <td><?php echo $message['user_agent']; ?></td>
+                        <td><?php echo $message['message']; ?></td>
+                    </tr>
+                    <?php
+                    endforeach;
+                    ?>
+                </tbody>
+            </table>
         </main>
     </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

@@ -82,6 +82,17 @@ class Database {
 
     }
 
+    public function getLastMessages($ip) {
+        
+        $sql = "SELECT messages.* FROM messages JOIN users ON users.id = messages.user_id WHERE users.ip = '$ip' ORDER BY id DESC LIMIT 10";
+
+        $stmt = $this->connection->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
 
 // $obj = new Database();
