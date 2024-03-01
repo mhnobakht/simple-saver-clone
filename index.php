@@ -3,6 +3,7 @@
 use Academy01\Semej\Semej;
 
 require_once './class/Message.php';
+require_once './class/Helper.php';
 $_message = new Message();
 
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -67,7 +68,7 @@ if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
                     foreach($lastMessages as $message):
                     ?>
                     <tr>
-                        <td><?php echo $message['user_agent']; ?></td>
+                        <td><?php echo Helper::getBrowser($message['user_agent']); ?></td>
                         <td><?php echo $message['message']; ?></td>
                     </tr>
                     <?php
