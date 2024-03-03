@@ -1,12 +1,13 @@
 <?php
 
+use Academy01\InputSanitizer\InputSanitizer;
 use Academy01\Semej\Semej;
 
 require_once './class/Message.php';
 require_once './class/Helper.php';
 $_message = new Message();
 
-$ip = $_SERVER['REMOTE_ADDR'];
+$ip = InputSanitizer::sanitize($_SERVER['REMOTE_ADDR']);
 
 $lastMessage =  $_message->getMessage($ip);
 $lastMessages = $_message->getMessages($ip);
@@ -15,9 +16,8 @@ if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     
     
     // get form and request data
-    $ip = $_SERVER['REMOTE_ADDR'];
-    $user_agent = $_SERVER['HTTP_USER_AGENT'];
-    $message = $_POST['message'];
+    $user_agent = InputSanitizer::sanitize($_SERVER['HTTP_USER_AGENT']);
+    $message = InputSanitizer::sanitize($_POST['message']);
 
     
     $_message->add($ip, $user_agent, $message);
@@ -54,7 +54,7 @@ if(isset($_POST['save_btn']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             <hr>
             <h5>last 10 Messages.</h5>
             <small>
-                IP: 1.2.3.4
+                IP: <?php echo $ip; ?>
             </small>
             <table class="table table-responsive table-stripped table-info table-bordered">
                 <thead>

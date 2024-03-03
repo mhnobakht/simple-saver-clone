@@ -1,6 +1,7 @@
 {
     "minimum-stability": "dev",
     "require": {
-        "academy01/semej": "v1.0.0.x-dev"
+        "academy01/semej": "v1.0.0.x-dev",
+        "academy01/input-sanitizer": "dev-main"
     }
 }

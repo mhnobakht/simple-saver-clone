@@ -4,8 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47451bc25dfcf53593b4fb52f9fbb4c5",
+    "content-hash": "3a74aa2e91e4e0afaaaf7d9e06d1196d",
     "packages": [
+        {
+            "name": "academy01/input-sanitizer",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mhnobakht/input-sanitizer.git",
+                "reference": "289de8de1f3da0eaac6a754f3f33753f05c0001e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mhnobakht/input-sanitizer/zipball/289de8de1f3da0eaac6a754f3f33753f05c0001e",
+                "reference": "289de8de1f3da0eaac6a754f3f33753f05c0001e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Academy01\\InputSanitizer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mhnobakht",
+                    "email": "01programmingacademy@gmail.com"
+                }
+            ],
+            "description": "PHP Package to Sanitizes a String or Array to prevent common Vulnerabilities",
+            "support": {
+                "issues": "https://github.com/mhnobakht/input-sanitizer/issues",
+                "source": "https://github.com/mhnobakht/input-sanitizer/tree/main"
+            },
+            "time": "2024-03-03T09:54:19+00:00"
+        },
         {
             "name": "academy01/semej",
             "version": "v1.0.0.x-dev",
@@ -48,7 +89,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "academy01/semej": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
